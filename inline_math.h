@@ -36,17 +36,17 @@ template <typename T> T inline linexp(T x, T in_min, T in_max, T out_min, T out_
     return pow(out_max / out_min, (x - in_min) / (in_max - in_min)) * out_min;
 }
 
-template <typename T> T inline lincurve(T x, T in_min, T in_max, T out_min, T out_max, int curve = -4, String clip="minmax") {
+template <typename T> T inline lincurve(T x, T in_min, T in_max, T out_min, T out_max, int curve = -4, const char* clip="minmax") {
 	T grow, a, b, scaled;
-	if(strcmp(clip, "minmax")) {
+	if(strcmp(clip, "minmax") == 0) {
 		if(x <= in_min)
             return out_min;
 		if(x >= in_max) 
             return out_max;
-    } elseif(strcmp(clip, "min")) {
+    } else if(strcmp(clip, "min") == 0) {
 		if(x <= in_min) 
             return out_min;
-    } elseif(strcmp(clip, "max")) {
+    } else if(strcmp(clip, "max") == 0) {
 		if(x >= in_max) 
             return out_max;
     }
@@ -60,17 +60,17 @@ template <typename T> T inline lincurve(T x, T in_min, T in_max, T out_min, T ou
 	return b - (a * pow(grow, scaled));
 }
 
-template <typename T> T inline curvelin(T x, T in_min, T in_max, T out_min, T out_max, int curve = -4, String clip="minmax") {
+template <typename T> T inline curvelin(T x, T in_min, T in_max, T out_min, T out_max, int curve = -4, const char* clip="minmax") {
 	T grow, a, b, scaled;
-	if(strcmp(clip, "minmax")) {
+	if(strcmp(clip, "minmax") == 0) {
 		if(x <= in_min)
             return out_min;
 		if(x >= in_max) 
             return out_max;
-    } elseif(strcmp(clip, "min")) {
+    } else if(strcmp(clip, "min") == 0) {
 		if(x <= in_min) 
             return out_min;
-    } elseif(strcmp(clip, "max")) {
+    } else if(strcmp(clip, "max") == 0) {
 		if(x >= in_max) 
             return out_max;
     }
@@ -83,16 +83,16 @@ template <typename T> T inline curvelin(T x, T in_min, T in_max, T out_min, T ou
 	return log((b - x) / a) * (out_max - out_min) / curve + out_min;
 }
 
-template <typename T> T inline bilin(T x, T in_center, T in_min, T in_max, T out_center, T out_min, T out_max, String clip="minmax") {
-	if(strcmp(clip, "minmax")) {
+template <typename T> T inline bilin(T x, T in_center, T in_min, T in_max, T out_center, T out_min, T out_max, const char* clip="minmax") {
+	if(strcmp(clip, "minmax") == 0) {
 		if(x <= in_min)
             return out_min;
 		if(x >= in_max) 
             return out_max;
-    } elseif(strcmp(clip, "min")) {
+    } else if(strcmp(clip, "min") == 0) {
 		if(x <= in_min) 
             return out_min;
-    } elseif(strcmp(clip, "max")) {
+    } else if(strcmp(clip, "max") == 0) {
 		if(x >= in_max) 
             return out_max;
     }
@@ -103,16 +103,16 @@ template <typename T> T inline bilin(T x, T in_center, T in_min, T in_max, T out
 	}
 }
 
-template <typename T> T inline biexp(T x, T in_center, T in_min, T in_max, T out_center, T out_min, T out_max, String clip="minmax") {
-	if(strcmp(clip, "minmax")) {
+template <typename T> T inline biexp(T x, T in_center, T in_min, T in_max, T out_center, T out_min, T out_max, const char* clip="minmax") {
+	if(strcmp(clip, "minmax") == 0) {
 		if(x <= in_min)
             return out_min;
 		if(x >= in_max) 
             return out_max;
-    } elseif(strcmp(clip, "min")) {
+    } else if(strcmp(clip, "min") == 0) {
 		if(x <= in_min) 
             return out_min;
-    } elseif(strcmp(clip, "max")) {
+    } else if(strcmp(clip, "max") == 0) {
 		if(x >= in_max) 
             return out_max;
     }
