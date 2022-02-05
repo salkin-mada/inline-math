@@ -139,3 +139,10 @@ template <typename T> T inline biexp(T x, T in_center, T in_min, T in_max, T out
 /*    val = ((-1.f/3.f) * val + 2.f) * val - (2.f/3.f); */
 /*    return val + static_cast<float>(log_2); */
 /* } */
+
+//randomness
+
+template <typename T> T inline sum3rand(T min, T max) {
+    return random(min, max) + random(min, max) + random(min, max);
+}
+
