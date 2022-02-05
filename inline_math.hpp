@@ -9,7 +9,7 @@ template <typename T> T inline linlin(T x, T in_min, T in_max, T out_min, T out_
         return out_min;
     if (x >= in_max)
         return out_max;
-  return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+    return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
 
 template <typename T> T inline explin(T x, T in_min, T in_max, T out_min, T out_max) {
@@ -37,90 +37,90 @@ template <typename T> T inline linexp(T x, T in_min, T in_max, T out_min, T out_
 }
 
 template <typename T> T inline lincurve(T x, T in_min, T in_max, T out_min, T out_max, int curve = -4, const char* clip="minmax") {
-	T grow, a, b, scaled;
-	if(strcmp(clip, "minmax") == 0) {
-		if(x <= in_min)
+    T grow, a, b, scaled;
+    if(strcmp(clip, "minmax") == 0) {
+        if(x <= in_min)
             return out_min;
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     } else if(strcmp(clip, "min") == 0) {
-		if(x <= in_min) 
+        if(x <= in_min)
             return out_min;
     } else if(strcmp(clip, "max") == 0) {
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     }
-	if(abs(curve) < 0.001) {
-		return (x - in_min) / (in_max - in_min) * (out_max - out_min) + out_min;
-	}
-	grow = exp(curve);
-	a = out_max - out_min / (1.0 - grow);
-	b = out_min + a;
-	scaled = (x - in_min) / (in_max - in_min);
-	return b - (a * pow(grow, scaled));
+    if(abs(curve) < 0.001) {
+        return (x - in_min) / (in_max - in_min) * (out_max - out_min) + out_min;
+    }
+    grow = exp(curve);
+    a = out_max - out_min / (1.0 - grow);
+    b = out_min + a;
+    scaled = (x - in_min) / (in_max - in_min);
+    return b - (a * pow(grow, scaled));
 }
 
 template <typename T> T inline curvelin(T x, T in_min, T in_max, T out_min, T out_max, int curve = -4, const char* clip="minmax") {
-	T grow, a, b, scaled;
-	if(strcmp(clip, "minmax") == 0) {
-		if(x <= in_min)
+    T grow, a, b, scaled;
+    if(strcmp(clip, "minmax") == 0) {
+        if(x <= in_min)
             return out_min;
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     } else if(strcmp(clip, "min") == 0) {
-		if(x <= in_min) 
+        if(x <= in_min)
             return out_min;
     } else if(strcmp(clip, "max") == 0) {
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     }
-	if(abs(curve) < 0.001) {
-		return (x - in_min) / (in_max - in_min) * (out_max - out_min) + out_min;
-	}
-	grow = exp(curve);
-	a = in_max - in_min / (1.0 - grow);
-	b = in_min + a;
-	return log((b - x) / a) * (out_max - out_min) / curve + out_min;
+    if(abs(curve) < 0.001) {
+        return (x - in_min) / (in_max - in_min) * (out_max - out_min) + out_min;
+    }
+    grow = exp(curve);
+    a = in_max - in_min / (1.0 - grow);
+    b = in_min + a;
+    return log((b - x) / a) * (out_max - out_min) / curve + out_min;
 }
 
 template <typename T> T inline bilin(T x, T in_center, T in_min, T in_max, T out_center, T out_min, T out_max, const char* clip="minmax") {
-	if(strcmp(clip, "minmax") == 0) {
-		if(x <= in_min)
+    if(strcmp(clip, "minmax") == 0) {
+        if(x <= in_min)
             return out_min;
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     } else if(strcmp(clip, "min") == 0) {
-		if(x <= in_min) 
+        if(x <= in_min)
             return out_min;
     } else if(strcmp(clip, "max") == 0) {
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     }
-	if(x >= in_center) {
-		return linlin(x, in_center, in_max, out_center, out_max, "none");
-	} else {
-		return linlin(x, in_min, in_center, out_min, out_center, "none");
-	}
+    if(x >= in_center) {
+        return linlin(x, in_center, in_max, out_center, out_max, "none");
+    } else {
+        return linlin(x, in_min, in_center, out_min, out_center, "none");
+    }
 }
 
 template <typename T> T inline biexp(T x, T in_center, T in_min, T in_max, T out_center, T out_min, T out_max, const char* clip="minmax") {
-	if(strcmp(clip, "minmax") == 0) {
-		if(x <= in_min)
+    if(strcmp(clip, "minmax") == 0) {
+        if(x <= in_min)
             return out_min;
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     } else if(strcmp(clip, "min") == 0) {
-		if(x <= in_min) 
+        if(x <= in_min)
             return out_min;
     } else if(strcmp(clip, "max") == 0) {
-		if(x >= in_max) 
+        if(x >= in_max)
             return out_max;
     }
-	if(x >= in_center) {
-		return explin(x, in_center, in_max, out_center, out_max, "none");
-	} else {
-		return explin(x, in_min, in_center, out_min, out_center, "none");
-	}
+    if(x >= in_center) {
+        return explin(x, in_center, in_max, out_center, out_max, "none");
+    } else {
+        return explin(x, in_min, in_center, out_min, out_center, "none");
+    }
 }
 
 //http://www.flipcode.com/archives/Fast_log_Function.shtml
