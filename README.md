@@ -12,4 +12,6 @@ Currently this library contains some classic math from `supercollider`
 * curvelin(x, in_min, in_max, out_min, out_max, curve, clip)
 * bilin(x, in_center, in_min, in_max, out_center, out_min, out_max, clip)
 * biexp(x, in_center, in_min, in_max, out_center, out_min, out_max, clip)
+* wrap(x, min, max)
+* wrap2(x, max)
 * sum3rand(min, max)
